@@ -1,0 +1,3 @@
+{"input": ["turner syndrome", "tetralogy of fallot", "noonan syndrome", "ischemic heart disease", "cardiac arrhythmias", "hypertensive heart Disease"], "parent": "cardiovascular diseases", "task": "Set-Expan"}
+{"input": ["arteriovenous malformations", "high blood pressure", "arterial occlusions", "atherosclerosis", "peripheral artery disease", "varicose veins"], "parent": "vcardioascular diseases", "task": "Set-Expan"}
+{"input": ["aortic valve stenosis", "cardia arrests", "carcinoid heart disease", "cardiogenic shock", "myocardial infarction"], "parent": "cardiovascular dieases", "task": "Set-Expan"}
