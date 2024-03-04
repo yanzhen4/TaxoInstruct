@@ -1,4 +1,5 @@
 from transformers import AutoTokenizer, AutoModel
+from transformers import BertTokenizer, BertModel
 import torch
 import numpy as np
 from tqdm import tqdm
@@ -8,12 +9,18 @@ device = torch.device(2)
 
 model = "allenai/specter"
 
-folder = ''
+folder = '/shared/data3/yanzhen4/TaxoInstruct/Entity_Set_Expansion'
 
+device = torch.device(0)
+bert_model = f'/shared/data2/yuz9/BERT_models/specter/'
+
+tokenizer = BertTokenizer.from_pretrained(bert_model)
+model = BertModel.from_pretrained(bert_model, output_hidden_states=True).to(device)
+
+'''
 tokenizer = AutoTokenizer.from_pretrained(model)
 model = AutoModel.from_pretrained(model, output_hidden_states=True).to(device)
-
-# Set the model to evaluation mode
+'''
 model.eval()
 
 def specter_encode(text):
@@ -80,17 +87,6 @@ def phrase(text):
     
     return entity, label 
 
-entity2label = {}
-with open(f'{folder}/label_all.txt') as fin:
-    for line in tqdm(fin):
-        entity, label = phrase(line)
-        entity2label[entity] = label
-        #print(entity, label)
-
 with open(f'{folder}/label_{index}.txt', 'w') as fout:
     for top_entity in top_entities:
-        if top_entity in entity2label:
-            label = entity2label[top_entity]
-            fout.write(top_entity + '\t' + str(label) + '\n')
-        else:
-            fout.write(top_entity + '\t\n')
+        fout.write(top_entity + '\t\n')

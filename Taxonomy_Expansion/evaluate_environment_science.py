@@ -1,4 +1,5 @@
 from transformers import BertTokenizer, BertModel
+from transformers import AutoTokenizer, AutoModel
 import torch
 import numpy as np
 from tqdm import tqdm
@@ -8,19 +9,21 @@ import networkx as nx
 
 device = torch.device(3)
 
-model_name = 'specter'
 dataset = 'science'
 
-        
-folder = ''
-
-bert_model = f''
-data_folder = ''
-file_name = f''
-
+bert_model = f'/shared/data2/yuz9/BERT_models/{model_name}/'
 tokenizer = BertTokenizer.from_pretrained(bert_model)
 model = BertModel.from_pretrained(bert_model, output_hidden_states=True).to(device)
 model.eval()
+
+'''
+tokenizer = AutoTokenizer.from_pretrained(model)
+model = AutoModel.from_pretrained(model, output_hidden_states=True).to(device)
+'''
+
+folder = ''
+data_folder = ''
+file_name = f''
 
 def specter_encode(text):
     input_ids = torch.tensor(tokenizer.encode(text, max_length=512, truncation=True)).unsqueeze(0).to(device)

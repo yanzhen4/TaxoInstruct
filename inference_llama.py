@@ -251,7 +251,7 @@ def main(
 
         return output
     
-    folder = ''
+    folder = '/shared/data3/yanzhen4/TaxoInstruct'
     with open(f'{folder}/{output_name}', 'w') as fout:
         with open(f'{folder}/{data_path}') as fin:
             Lines = fin.readlines()
@@ -277,7 +277,7 @@ def main(
 
                         entities = input
                         iteration = 0
-                        while(len(unique_entities) < 400 and iteration < 80):
+                        while(len(unique_entities) < 50 and iteration < 80):
                             random.shuffle(entities)
                             output = evaluate(input = (entities, parent), task = task)
                             output = split_output_string(output)
