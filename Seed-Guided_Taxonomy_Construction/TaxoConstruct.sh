@@ -6,7 +6,7 @@ finetune_training_data="Pubmed_CVD/finetune_TaxoConstruct.jsonl"
 finetune_weight_path="Seed-Guided_Taxonomy_Construction/finetune_weights/CVD_finetune"
 
 #Train model on Pubmed_CVD given structure
-WORLD_SIZE=2  torchrun --nproc_per_node=2 --master_port=21419 finetune_llama2.py \
+WORLD_SIZE=2  torchrun --nproc_per_node=2 --master_port=21419 finetune_llama.py \
     --base_model "/shared/data3/checkpoints/llama-2-7b-chat-hf" \
     --num_epochs 10 \
     --cutoff_len 2048 \
@@ -33,3 +33,15 @@ python3 inference_llama.py \
      --complete_output False\
      --set_expan_parent True
 
+python3 find_parent_data.py
+
+taxo_expan_data_path="Seed-Guided_Taxonomy_Construction/Taxo_Expan_input.jsonl"
+taxo_expan_output_path="Seed-Guided_Taxonomy_Construction/Taxo_Expan_output.jsonl"
+
+python3 inference_llama.py \
+    --base_model "/shared/data3/checkpoints/llama-2-7b-chat-hf" \
+    --lora_weights $finetune_weight_path \
+    --output_name  $taxo_expan_output_path\
+    --data_path  $taxo_expan_data_path\
+    --full_parent False \
+    --complete_output False\

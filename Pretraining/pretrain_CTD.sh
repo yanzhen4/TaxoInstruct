@@ -4,7 +4,7 @@ export CUDA_VISIBLE_DEVICES=0,1
 training_data="Pretraining/CTD_Pretrain.jsonl"
 output_folder="Pretraining/CTD_Pretrain_weights"
 
-WORLD_SIZE=2  torchrun --nproc_per_node=2 --master_port=21234 finetune_llama2.py \
+WORLD_SIZE=2  torchrun --nproc_per_node=2 --master_port=21234 finetune_llama.py \
     --base_model "/shared/data3/checkpoints/llama-2-7b-chat-hf" \
     --num_epochs 15 \
     --cutoff_len 2048 \

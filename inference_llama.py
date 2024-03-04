@@ -27,21 +27,32 @@ try:
 except:  # noqa: E722
     pass
 
+stopwords = ['are', ' is ', '{', 'and', 'by', 'with', ':', ' to ', ',', ' a ', 'type', ' the ', 
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-']
+
+def phrase_output_string(s, stopwords):
+
+    if len(s) > 30 or len(s) < 5:
+        return ''
+        
+    last_pos = -1
+
+    for stopword in stopwords:
+        pos = s.rfind(stopword)
+        if pos > last_pos:
+            last_pos = pos
+            last_stopword_length = len(stopword)
+            
+    if last_pos != -1:
+        return s[last_pos + last_stopword_length:].strip()
+    else:
+        return s
+
 def split_input_string(input_string):
-    """
-    Splits the input string into individual states.
-    Assumes the input string is in the format "{'state1, state2, state3'}".
-    """
-    # Removing curly braces and splitting by comma
     entities = input_string.strip("{}").replace("'", "").split(", ")
     return entities
 
 def split_output_string(output_string):
-    """
-    Splits the input string into individual states.
-    Assumes the input string is in the format "{'state1, state2, state3'}".
-    """
-    # Removing curly braces and splitting by comma
     prefix = 'The expanded entities belonging to the category with the same granularity are '
     entities = output_string[len(prefix):].strip("{}").replace("'", "").split(", ")
     return entities
@@ -143,8 +154,8 @@ def main(
             f"set_expan_parent: {set_expan_parent}\n"
         )
 
-    lora_weights_path = '/shared/data3/yanzhen4/Taxo_Set_expan/On-Demand-IE-Environ/training/' + lora_weights
-    inference_data_path = '/shared/data3/yanzhen4/Taxo_Set_expan/On-Demand-IE-Environ/training/' + data_path
+    lora_weights_path = '' + lora_weights
+    inference_data_path = '' + data_path
     if check_file_path(lora_weights_path) == False: 
             raise FileNotFoundError(f"File not found: {lora_weights_path}")
     if check_file_path(inference_data_path) == False: 
@@ -240,7 +251,7 @@ def main(
 
         return output
     
-    folder = '/shared/data3/yanzhen4/Taxo_Set_expan/On-Demand-IE-Environ/training'
+    folder = ''
     with open(f'{folder}/{output_name}', 'w') as fout:
         with open(f'{folder}/{data_path}') as fin:
             Lines = fin.readlines()
@@ -263,22 +274,19 @@ def main(
                         print("Completing output")
 
                         unique_entities = set()
-                        # for entity_order in permutations(input):
-                            
-                        #     output = evaluate(input = (entity_order, parent), task = task)
-                        #     output = split_output_string(output)
-                            
-                        #     unique_entities.update(output)
 
-                        #     if len(unique_entities) >= 200:
-                        #         break
                         entities = input
                         iteration = 0
                         while(len(unique_entities) < 400 and iteration < 80):
                             random.shuffle(entities)
                             output = evaluate(input = (entities, parent), task = task)
                             output = split_output_string(output)
-                            unique_entities.update(output)
+
+                            for entity in output:
+                                entity = phrase_output_string(entity, stopwords)
+                                if len(entity) > 0:
+                                    unique_entities.add(entity)
+
                             iteration += 1
                             print(len(unique_entities), "unique entities expanded")
 

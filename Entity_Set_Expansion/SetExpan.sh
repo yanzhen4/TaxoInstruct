@@ -15,3 +15,5 @@ python3 inference_llama.py \
      --full_parent False \
      --complete_output True\
      --set_expan_parent True
+
+python3 rank_output.py
