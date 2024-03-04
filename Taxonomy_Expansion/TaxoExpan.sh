@@ -8,7 +8,7 @@ taxo_expan_data_input_path="Taxonomy_Expansion/test_Taxo_Expan_environment.jsonl
 taxo_expan_data_output_path="Taxonomy_Expansion/specter/test_Taxo_Expan_environment.jsonl"
 
 #Finetune model on Environment/Science
-WORLD_SIZE=2  torchrun --nproc_per_node=2 --master_port=21420 finetune_llama2.py \
+WORLD_SIZE=2  torchrun --nproc_per_node=2 --master_port=21420 finetune_llama.py \
     --base_model "/shared/data3/checkpoints/llama-2-7b-chat-hf" \
     --num_epochs 5 \
     --cutoff_len 2048 \
