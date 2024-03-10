@@ -271,13 +271,14 @@ def main(
 
                     if complete_output == True:
                         
-                        print("Completing output")
+                        max_entities = 300
+                        max_iterations = 100
 
                         unique_entities = set()
 
                         entities = input
                         iteration = 0
-                        while(len(unique_entities) < 50 and iteration < 80):
+                        while(len(unique_entities) < max_entities and iteration < max_iterations):
                             random.shuffle(entities)
                             output = evaluate(input = (entities, parent), task = task)
                             output = split_output_string(output)
@@ -288,7 +289,7 @@ def main(
                                     unique_entities.add(entity)
 
                             iteration += 1
-                            print(len(unique_entities), "unique entities expanded")
+                            print("Interation", iteration, len(unique_entities), "unique entities expanded")
 
                         output = list(unique_entities)
                     else:
