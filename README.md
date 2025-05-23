@@ -10,11 +10,11 @@ We used the open-source framework [unsloth](https://github.com/unslothai/unsloth
 
 This folder includes three shell scripts to run each task supported by **TaxoInstruct**:
 
-| Script                          | Task                           | Description                                                                 |
-|--------------------------------|--------------------------------|-----------------------------------------------------------------------------|
-| `inference_SetExpan.sh`        | Entity Set Expansion           | Finds semantically similar sibling entities given seed examples.           |
-| `inference_evaluate_TaxoExpan.sh` | Taxonomy Expansion           | Identifies appropriate parents for a new entity to insert into a taxonomy. |
-| `inference_HiExpan.sh`         | Seed-Guided Taxonomy Construction | Grows a seed taxonomy by generating new entities and discovering parent-child edges. |
+| Script                          | Task                           
+|--------------------------------|--------------------------------|
+| `inference_SetExpan.sh`        | Entity Set Expansion           | 
+| `inference_evaluate_TaxoExpan.sh` | Taxonomy Expansion           | 
+| `inference_HiExpan.sh`         | Seed-Guided Taxonomy Construction | 
 
 Each script is pre-configured with input/output paths and model checkpoints.
 
