@@ -10,11 +10,11 @@ We used the open-source framework [unsloth](https://github.com/unslothai/unsloth
 
 This folder includes three shell scripts to run each task supported by **TaxoInstruct**:
 
-| Script                          | Task                           
-|--------------------------------|--------------------------------|
-| `inference_SetExpan.sh`        | Entity Set Expansion           | 
-| `inference_evaluate_TaxoExpan.sh` | Taxonomy Expansion           | 
-| `inference_HiExpan.sh`         | Seed-Guided Taxonomy Construction | 
+| Script                          | Task                          | Datasets
+|--------------------------------|--------------------------------|--------------------------------|
+| `inference_SetExpan.sh`        | Entity Set Expansion           | APR, WIKI
+| `inference_evaluate_TaxoExpan.sh` | Taxonomy Expansion           | Environment, Science
+| `inference_HiExpan.sh`         | Seed-Guided Taxonomy Construction | CVD (cvd), DBLP (dblp)
 
 Each script is pre-configured with input/output paths and model checkpoints.
 
