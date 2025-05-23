@@ -16,7 +16,5 @@ This folder includes three shell scripts to run each task supported by **TaxoIns
 | `inference_evaluate_TaxoExpan.sh` | Taxonomy Expansion           | Identifies appropriate parents for a new entity to insert into a taxonomy. |
 | `inference_HiExpan.sh`         | Seed-Guided Taxonomy Construction | Grows a seed taxonomy by generating new entities and discovering parent-child edges. |
 
-Each script is pre-configured with input/output paths and model checkpoints. To run a script, simply execute:
+Each script is pre-configured with input/output paths and model checkpoints.
 
-```bash
-bash inference_<Task>.sh
