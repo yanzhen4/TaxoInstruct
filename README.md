@@ -16,7 +16,7 @@ This folder includes three shell scripts to run each task supported by **TaxoIns
 | `inference_evaluate_TaxoExpan.sh` | Taxonomy Expansion           | Environment, Science
 | `inference_HiExpan.sh`         | Seed-Guided Taxonomy Construction | CVD, DBLP
 
-Each script is pre-configured with input/output paths and model checkpoints. Before running the script, put the folder (i.e., ```datasets/``` and ```models/```) under the repository main folder ```./.```
+Each script is pre-configured with input/output paths and model checkpoints. Before running the script, put the folder (i.e., ```datasets/``` and ```model/```) under the repository main folder ```./.```
 
 
 
