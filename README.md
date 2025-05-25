@@ -4,7 +4,7 @@ Official Repo for [TaxoInstruct](https://arxiv.org/abs/2402.13405) "A Unified Ta
 
 Our data and models are available at [this link](https://drive.google.com/drive/folders/1uzvK0jppBEni9B7Hy5OhZLQ9McbQym32?usp=drive_link).
 
-We used the open-source framework [unsloth](https://github.com/unslothai/unsloth) to fine-tune LLMs efficiently. 
+We used the open-source framework [unsloth](https://github.com/unslothai/unsloth) to fine-tune LLMs efficiently, please follow unsloth's documentation to set up the environment. 
 
 
 
