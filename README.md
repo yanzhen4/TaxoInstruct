@@ -8,9 +8,9 @@ We used the open-source framework [unsloth](https://github.com/unslothai/unsloth
 
 
 
-## Scripts
+## Running TaxoInstruct
 
-This folder includes three shell scripts to run the three taxonomy construction tasks supported by **TaxoInstruct**:
+```script/``` includes three shell scripts to run the three taxonomy construction tasks supported by **TaxoInstruct**:
 
 | Script                          | Task                          | Available Datasets
 |--------------------------------|--------------------------------|--------------------------------|
